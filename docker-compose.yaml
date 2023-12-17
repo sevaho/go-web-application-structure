@@ -1,0 +1,18 @@
+---
+version: '3'
+
+services:
+
+  db:
+    image: postgres:16-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=docker
+    networks:
+      - app
+
+networks:
+  app:
+    name: app

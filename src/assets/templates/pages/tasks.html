@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="m-2 lg:m-64">
+    <!-- Open the modal using ID.showModal() method -->
+    <div class="flex justify-end mb-5">
+        <button
+            class="btn btn-success"
+            onclick="document.getElementById('x-task-form-create').showModal()"
+        >
+            Create Task
+        </button>
+    </div>
+
+    <dialog id="x-task-form-create" class="modal">
+    <div class="modal-box">
+        <h3 class="font-bold text-lg">New task</h3>
+
+        <form
+            method="dialog"
+            class="m-10"
+            hx-post='/tasks'
+            hx-on::after-request="setTimeout(function () { location.reload(true); }, 100);"
+            >
+            <label class="label">
+                <span class="label-text">Title:</span>
+            </label>
+            <input required type="text" name="title"class="input input-bordered w-full"/>
+
+            <label class="label">
+                <span class="label-text">Text:</span>
+            </label>
+            <textarea name="text" cols="40" rows="5" class="textarea textarea-bordered w-full"></textarea>
+
+            <!-- if there is a button in form, it will close the modal -->
+            <button type="submit" class="btn my-2 btn-accent w-full mt-5">Create</button>
+        </form>
+    </div>
+    </dialog>
+
+    {% for x in tasks %}
+    <div class="flex items-center justify-center">
+
+        <dialog id="x-task-form-edit-{{x.ID}}" class="modal">
+            <div class="modal-box">
+                <h3 class="font-bold text-lg">Edit task</h3>
+
+                <form
+                    method="dialog"
+                    class="m-10"
+                    hx-patch='/tasks/{{x.ID}}'
+                    hx-on::after-request="setTimeout(function () { location.reload(true); }, 100);"
+                    >
+                    <label class="label">
+                        <span class="label-text">Title:</span>
+                    </label>
+                    <input required type="text" name="title" class="input input-bordered w-full" value="{{x.Title}}"/>
+
+                    <label class="label">
+                        <span class="label-text">Text:</span>
+                    </label>
+                    <textarea name="text" cols="40" rows="5" class="textarea textarea-bordered w-full">{{x.Text}}</textarea>
+
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button type="submit" class="btn my-2 btn-accent w-full mt-5">Update</button>
+                </form>
+            </div>
+        </dialog>
+
+
+        <div class="card card-compact bg-base-200 shadow-xl pb-10 m-3 w-1/2">
+            <div class="flex justify-end m-5">
+                <button
+                    class="btn btn-warning me-3"
+                    onclick="document.getElementById('x-task-form-edit-{{x.ID}}').showModal()"
+                >
+                    Update
+                </button>
+
+                <button
+                class="btn btn-error"
+                hx-delete='/tasks/{{x.ID}}'
+                hx-on::after-request="location.reload();"
+                >
+                    Delete
+                </button>
+            </div>
+
+            <p class="text-bold text-left mx-10 ">{{ _prettytime(x.CreatedAt) }}</p>
+            <h1 class="text-3xl text-center">{{ x.Title }}</h1>
+            <p class="mt-5 mx-10">{{ x.Text }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

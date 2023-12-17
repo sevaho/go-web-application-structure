@@ -1,0 +1,25 @@
+{
+  "name": "home-group03web.hp.ti.howest.be",
+  "version": "1.0.0",
+  "description": "##",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css": "tailwindcss -i ./assets/app.css -o ./src/assets/public/css/app.css --watch",
+    "css::prod": "tailwindcss -i ./assets/app.css -o ./src/assets/public/css/app.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sevaho/capnhook.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sevaho/capnhook/issues"
+  },
+  "homepage": "https://github.com/sevaho/capnhook#readme",
+  "dependencies": {
+    "daisyui": "^4.4.19",
+    "tailwindcss": "^3.3.3"
+  }
+}

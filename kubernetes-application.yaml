@@ -1,0 +1,38 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: <TODO>
+  namespace: <TODO>
+spec:
+  project: default
+  source:
+    path: <TODO>
+    repoURL: <TODO>
+    targetRevision: HEAD
+    helm:
+      releaseName: <TODO>
+      valuesObject:
+        imageFull: ko://github.com/sevaho/go-application-structure
+        args:
+          - --serve
+
+        env:
+          ENVIRONMENT: "PRODUCTION"
+
+        service:
+          type: ClusterIP
+          port: 80
+          targetPort: 3000
+
+        ingress: {}
+        livenessProbe: {}
+        readinessProbe: {}
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: <TODO>
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

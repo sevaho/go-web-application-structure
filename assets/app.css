@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.toastify {
+    @apply bg-red-500;
+    @apply text-red-500;
+    @apply mt-10;
+}
