@@ -19,14 +19,14 @@ This project offers an opinionated web application structure for applications wr
 
 ## Tools used
 
-- GoFiber
-- sqlc
-- dbmate
-- HTMX
-- Tailwind
-- DaisyUI
-- argocd
-- ko
+- [GoFiber](https://github.com/gofiber/fiber)
+- [sqlc](https://github.com/sqlc-dev/sqlc)
+- [dbmate](https://github.com/amacneil/dbmate)
+- [HTMX](https://github.com/bigskysoftware/htmx)
+- [Tailwind](https://github.com/tailwindlabs/tailwindcss)
+- [DaisyUI](https://github.com/saadeghi/daisyui)
+- [argocd](https://github.com/argoproj/argo-cd)
+- [Ko](https://github.com/ko-build/ko)
 
 ## Usage
 
@@ -61,21 +61,21 @@ $ make test
 
 Although it has it's quirks (try passing dynamic arguments to a make command), the limitation it has are also its strenght.
 
-### Why Sqlc
+### Why [Sqlc](https://github.com/sqlc-dev/sqlc)
 
 > If you love writing SQL statements, you will love sqlc
 
 I think this library is one of those libraries that once you see it, you put it in your toolbelt and make it your go to database handler.
 The idea of sqlc is that you write sql first and then generate your code, which is... awesome!
 
-### Why Ko
+### Why [Ko](https://github.com/ko-build/ko)
 
 > OCI container builder with SBOM and Kubernetes integration.
 
 [Ko](https://github.com/ko-build/ko) is a newer way to build OCI compatible containers without using the `docker` binary.
 Amazing tool to work with if you are deploying to Kubernetes.
 
-### Why ArgoCD
+### Why [ArgoCD](https://github.com/argoproj/argo-cd)
 
 I like the unix philosphy of doing 1 thing well. When it comes to CI/CD, there are a lot of moving pieces and most CI/CD tools are doing a lot at the same time.
 ArgoCD is in my opinion a tool that does 1 thing well and that is, making it incredibiliy easy to deploy applications on Kubernetes.
